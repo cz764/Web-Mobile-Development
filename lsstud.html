@@ -1,0 +1,66 @@
+<!DOCTYPE html PUBLIC "-//w3c//dtd html 4.0 transitional//en">
+<html>
+<head>
+    
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+    
+  <meta name="GENERATOR" content="Mozilla/4.75 [en] (WinNT; U) [Netscape]">
+  <title>List a subdirectory</title>
+</head>
+  <body>
+ This is a simple form that will invoke a unix shell script &nbsp;that will
+list the contents<br>
+of any <b>websys</b> directory. Right click on the link below, and then <br>
+click "Save As" &nbsp;"lsstud.cgi". See below...<br>
+ 
+<p><a href="http://www.stern.nyu.edu/%7Enwhite/websys/lsstud.txt">lsstud.cgi 
+-- (Right Click this link and SAVE AS <b>lsstud.cgi</b> to get a copy)</a>
+ </p>
+<p>&nbsp; </p>
+<p><a href="http://www.stern.nyu.edu/%7Enwhite/websys/lsstud.html">Right click
+this link and SAVE AS <b> lsstud.html </b> for the form code</a>
+ </p>
+<p>&nbsp;Move (sftp or Dreamweaver) the lsstud.cgi program and the lsstud.html program to
+your websys directory </p>
+<p>&nbsp;and make sure they work (point your browser at http://vleda..stern.nyu.edu/~youruserid/websys/lsstud.html).
+Remember to chmod o+r to the lsstud.html program </p>
+<p>&nbsp;and chmod o+rx to the lsstud.cgi program before you try them, so
+the web server process has the correct access rights. </p>
+<p><br>
+<big><b>Homework:</b></big></p>
+<p> Please customize them (both the form and the cgi program) so they </p>
+<p>&nbsp;1) Are "Prettier" (MUST DO) (i.e. eliminate extraneous information
+on the form and the output). </p>
+<p>&nbsp;2) List the contents in a vertical column (MUST DO) </p>
+<p>&nbsp;and optionally (heavy lifting) </p>
+<p>&nbsp;3) Provide user with a link to a "clickable list of the files" (hint: not
+too hard if there is no index.html file) </p>
+
+<p>&nbsp;4) (Harder) Change logic so that user doesn't have to specify the </p>
+<p>first character of their userid. </p>
+<p>(possible approaches javascript code in html, or a case statement in shell 
+program, or use the unix<i> cut </i>command.)</p>
+<pre>
+fchar=`echo $userid|cut -c1-1`
+</pre>
+<p> </p>
+<p><br>
+case userid in </p>
+<p>a*) fchar= a;; </p>
+<p>... </p>
+<p> z*) fchar =z;; </p>
+<p>esac </p>
+<p>Good luck (Scroll down for FORM ) </p>
+<p> </p>
+<hr>
+<form method="Get" action="lsstud.cgi">This form will generate a listing of
+the websys sub-directory 
+  <p>for a Stern Student. </p>
+  <p>&nbsp;First character of userid&nbsp;<input type="text" name="fchar" size="1">
+(i.e. v) </p>
+  <p>&nbsp;Full Userid&nbsp;<input type="text" name="userid" size="8">(i.e. 
+vyr200) </p>
+  <p><input type="submit" value="submit"> </p>
+  <hr> </form>
+</body>
+</html>

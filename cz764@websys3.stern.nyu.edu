@@ -1,0 +1,129 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Register</title>
+<link href="../jquery-mobile/jquery.mobile.theme-1.3.0.min.css" rel="stylesheet" type="text/css">
+<link href="../jquery-mobile/jquery.mobile.structure-1.3.0.min.css" rel="stylesheet" type="text/css">
+<script src="../jquery-mobile/jquery-1.8.3.min.js" type="text/javascript"></script>
+<script src="../jquery-mobile/jquery.mobile-1.3.0.min.js" type="text/javascript"></script>
+<style>span.status{ color: red; font-weight: bold;}</style>
+</head>
+
+<body>
+<script>
+	function checkPassword(password, conPassword) {
+		return password === conPassword;
+	}
+	
+	function functionSubmit() {
+		var password = document.getElementById("password").value;
+		var confirmPassword = document.getElementById("confirm_password").value;
+		var email = document.getElementById("email").value;
+                var email_available = document.getElementById("email_status").innerHTML;
+		var check = document.getElementById("checkbox1_0");
+		if (email == "") {
+                    alert("Please enter a valid email address");
+        //            document.getElementById("email_status").innerHTML("Email is required!");
+		}
+		else if (password == "") {
+                    alert("Please customize your password");
+        //           document.getElementById("password_status").innerHTML("Please enter password!");
+		}
+		else if (!checkPassword(password, confirmPassword)) {
+                    alert("Password you entered does not match. please re-enter your password");
+       //             document.getElementById("confirm_password_status").innerHTML("Password does not match!");
+		}
+		else if (!check.checked) {
+			alert("Please accept the Term of Use");
+                        alert(email_avaialble);
+		}		
+		else {
+			document.getElementById("submit").submit();			
+		}	
+	}	
+	
+
+	function myfunction() {
+		var x = document.getElementById("email");
+		$('#email').keyup(function(){
+			$('#email_status').text('Searching database.');		
+		});
+			
+		if(x.value !='') {
+			$.post('checkemail.php', {email: x.value}, function(data){
+				$('#email_status').text(data);
+           });
+		 }
+		 else {
+			 $('#email_status').text('Email cannot be empty.');	
+		}
+	}
+	
+	</script>
+
+<div data-role="page" id="page3">
+  <div data-role="header" data-theme="b">
+   <h1 style="font-size: x-small" onClick="location.reload();">NYU Online Market</h1>
+  </div>
+  <div data-role="content">
+  	<form id = "submit" method="post" action="register.php">
+    <div data-role="fieldcontain">First Name
+    <input type="text" name="first_name" id = "first_name" />
+	
+    <div data-role="fieldcontain">Last Name
+	<input type="text" name="last_name" id = "last_name" />
+
+	<div data-role="fieldcontain">
+		<label for="selectmenu" class="select">Gender</label>
+		<select name="selectmenu" id="selectmenu">
+            <option value="option1">Male</option>
+            <option value="option2">Female</option>
+            <option value="option3">Not available</option>
+		</select>
+        
+	<div data-role="fieldcontain">Email*
+	<input type="text" name="email" id = "email" value = ""
+    maxlength="50" title="Enter your Stern email please" 
+    onChange="myfunction()" />
+	<span class = "status" id="email_status"></span>
+    
+	<div data-role="fieldcontain">Password*
+            <input id="password" type="password" name="password" value = ""/>
+            <span class="status" id="password_status"></span>
+
+	<div data-role="fieldcontain">Confirm Password
+	<input id="confirm_password" type="password" name="comfirm_password" value = ""/>
+        <span class="status" id="confirm_password_status"></span>
+    
+    <div data-role="fieldcontain">
+	<!--<input id="checkTerm" type="checkbox" name="checkTerm" /><a href = "4.html"> Term of Use</a>-->
+        
+        <p align="center"><a href="4.html">Terms of use </a></p>
+                  <fieldset data-role="controlgroup">
+                    <legend></legend>
+                    <input id ="checkbox1_0" name="checkTerm" type="checkbox" class="custom" value="" />
+                    <label for="checkbox1_0">I agree</label>
+                  </fieldset>  
+    
+    </form>
+    
+    <div data-role="fieldcontain">
+	<fieldset data-role="controlgroup">
+     <p align="center"> <a onClick="functionSubmit()"  name="register"  data-role="button" style="width: 7em; height: 3em;">Register</a></p>
+    <p align="center"> <a href="1.html" data-role="button"  style="width: 7em; height: 3em;">Cancel</a></p>
+<legend></legend></fieldset>
+                </div>
+               
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  
+  
+  </div>
+</div>
+</body>
+</html>

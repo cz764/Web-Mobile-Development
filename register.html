@@ -1,0 +1,49 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Register</title>
+</head>
+
+<body>
+ <script>
+	function checkPassword(password, conPassword) {
+		return password === conPassword;
+	}
+	function functionSubmit() {
+		var password = document.getElementById("password").value;
+		var confirmPassword = document.getElementById("confirm_password").value;
+		var email = document.getElementById("email").value;
+		if (email == "") {
+			alert("Please enter the email address");
+			}
+		else if (password == "") {
+			alert("Please customize your password");	
+		}
+		
+		else if (checkPassword(password, confirmPassword)) {
+			document.getElementById("submit").submit();
+		}
+		else {
+			alert("Password you entered does not match. please re-enter your password");	
+		}
+	}	
+	</script>
+
+	<form id = "submit" method="post" action="register.php">
+	First Name: <input type="text" name="first_name">
+    <br><br>
+	Last Name: <input type="text" name="last_name">
+    <br><br>
+	Email: <input id = "email" type="text" name="email">
+    <br><br>
+	Password: <input id="password" type="password" name="password"> should contain no " " or symbols
+    <br><br>
+	Confirm Password: <input id="confirm_password" type="password" name="comfirm_password">
+    <br><br>  
+    <input type="button" onclick = "functionSubmit()" name="register" value="Register"> 
+    </form>
+
+</body>
+
+</html>
